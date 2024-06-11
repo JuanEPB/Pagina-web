@@ -1,0 +1,90 @@
+
+.Inicio{
+    background-image: url(/img/inicio.jpeg);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    justify-content: center;
+    height: 400px;
+    width: 100%;
+}
+.Opciones{
+    align-items: end;
+}
+.Productos{
+    display: flex;
+}
+.card1{
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    padding: 10px; /* ajusta según sea necesario */
+}
+
+h1{
+    margin: 0;
+    color: #272727;
+    font-size: bold;
+}
+
+ul.Opciones {
+    list-style-type: none;
+    margin: 10;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    margin-left: 70px; /* ajusta según sea necesario */
+}
+
+li a {
+    color: #262626;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+.titulop{
+    text-align: center;
+    font-size: 50px;
+}
+.boton{
+    text-align: center;
+    margin: 20px;
+    color: #44aff2;
+}
+.ver{
+    background-color: #44aff2;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 20px;
+    padding: 10px 20px;
+}
+.boton button.ver span{
+    font-size: 16px;
+}
+
+.conocenos{
+    text-align: start;
+    
+}
+.mapa{
+    text-align: end;
+}
+
