@@ -1,90 +1,267 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-.Inicio{
-    background-image: url(/img/inicio.jpeg);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    justify-content: center;
-    height: 400px;
+header {
+    position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+    z-index: 1000;
+    padding: 40px 20px; /* Ajusta el padding según sea necesario */
+    background-color: #f7f7f7;
 }
-.Opciones{
-    align-items: end;
+
+header.transparent {
+    background-color: rgba(157, 157, 157, 0); /* Inicialmente transparente */
 }
-.Productos{
-    display: flex;
+
+header.solid {
+    background-color: rgba(243, 243, 243, 1); /* Color de fondo cuando se desplaza */
 }
-.card1{
-    flex: 1;
-    margin: 0 10px;
-    text-align: center;
+
+header h1 {
+    margin: 0;
+    color: #000000;
+    font-weight: bold;
+    font-size:200%;
 }
+
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-    padding: 10px; /* ajusta según sea necesario */
-}
-
-h1{
-    margin: 0;
-    color: #272727;
-    font-size: bold;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
 }
 
 ul.Opciones {
     list-style-type: none;
-    margin: 10;
+    margin: 0;
     padding: 0;
     display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    margin-left: 20px;
+}
+div.opciones{
+    justify-content: flex-end;
+    
 }
 
-li {
-    margin-left: 70px; /* ajusta según sea necesario */
-}
-
-li a {
-    color: #262626;
+ul.Opciones li a {
+    color: #000000;
     text-decoration: none;
+    padding: 20px 15px; /* Añadir padding para mejor clicabilidad */
+    border-radius: 5px;
 }
 
-li a:hover:not(.active) {
-    background-color: #ddd;
+ul.Opciones li a:hover {
+    background-color: #8d8c8c;
 }
 
-li a.active {
+ul.Opciones li a.active {
     color: white;
     background-color: #4CAF50;
 }
-.titulop{
+
+.Inicio {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.Inicio .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/inicio.jpeg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Opacidad de la imagen de fondo */
+}
+.Inicio::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+    z-index: -1;
+}
+
+.Inicio .contenido {
+    z-index: 1; /* Asegura que el contenido esté sobre la imagen de fondo */
+    text-align: center;
+    color: rgb(216, 213, 213);
+}
+
+.Inicio h2 {
+    margin: 0;
+}
+
+.Inicio p {
+    max-width: 600px;
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+
+.Productos {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Para que todas las cards tengan la misma altura */
+    padding: 20px 0; /* Espaciado entre secciones */
+    margin: 0;
+}
+
+.card1 {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.titulop {
     text-align: center;
     font-size: 50px;
+    margin: 70px 0; /* Añadir margen arriba y abajo */
 }
-.boton{
+
+.boton {
     text-align: center;
-    margin: 20px;
-    color: #44aff2;
+    margin: 20px 0; /* Ajustar margen para centrar botón */
+    
 }
-.ver{
+
+.ver {
     background-color: #44aff2;
     border-radius: 5px;
     font-size: 20px;
     color: #FFFFFF;
-    margin: 20px;
     padding: 10px 20px;
-}
-.boton button.ver span{
-    font-size: 16px;
-}
-
-.conocenos{
-    text-align: start;
-    
-}
-.mapa{
-    text-align: end;
+    border: none; /* Eliminar borde predeterminado */
+    cursor: pointer; /* Cambiar cursor a mano */
 }
 
+.conocenos {
+    padding: 20px; /* Añadir padding para espaciar contenido */
+    background-color: #f9f9f9; /* Fondo para diferenciar secciones */
+    display: flex; /* Utilizar flexbox */
+    justify-content: space-between; /* Distribuir los elementos a los extremos */
+    align-items: center; /* Centrar verticalmente los elementos */
+}
+
+.descripcion {
+    flex: 1; /* Ocupar todo el espacio restante */
+    padding: 0 20px; /* Añadir espacio interno a la descripcion */
+}
+
+.mapa {
+    text-align: center;
+    margin: 20px 0; /* Añadir margen para espaciar el mapa */
+    flex: 1; /* Ocupar todo el espacio restante */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.redes a {
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los íconos */
+}
+
+.redes a svg {
+    width: 30px; /* Tamaño de los íconos */
+    height: 30px;
+    fill: #000; /* Color inicial de los íconos (negro) */
+    transition: fill 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.redes a:hover svg.facebook{
+    fill: blue;
+}
+.redes a:hover svg.instagram{
+    fill: #ff006e;
+}
+.redes a:hover svg.twitter-x{
+    fill: #829191;
+}
+
+
+
+.Contactanos {
+    display: flex;
+    padding: 20px;
+    background-color: #F7F7F7;
+}
+
+.formulario {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para formularios */
+    margin: 10px; /* Añadir margen entre formularios */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+.row {
+    margin-bottom: 10px;
+  }
+  
+  .row label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  .row input[type="text"] {
+    display: inline-block;
+    width: 200px;
+  }
+  
+  .row input[type="submit"] {
+    float: right;
+    margin-right: 10px;
+  }
+.whatsapp{
+    flex: 1;
+}
+
+footer {
+    padding: 20px 0; /* Espaciado en el footer */
+    background-color: #f3f3f3;
+    text-align: center; /* Centrar contenido del footer */
+}
+
+footer h2 {
+    margin: 0 0 10px 0; /* Margen entre el título y el contenido del footer */
+}
+
+footer a {
+    margin: 0 10px; /* Espacio entre iconos de redes sociales */
+    color: inherit; /* Mantener color de los iconos */
+}
+
+footer a:hover {
+    color: #4CAF50; /* Cambiar color al pasar el mouse */
+}
