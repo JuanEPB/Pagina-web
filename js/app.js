@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var header = document.querySelector("header");
     
     window.addEventListener("scroll", function() {
-        if (window.scrollY > 50) { // Cambia este valor según cuándo quieras que cambie el color
+        if (window.scrollY > 50) { 
             header.classList.add("solid");
             header.classList.remove("transparent");
         } else {
