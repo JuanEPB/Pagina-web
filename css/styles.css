@@ -311,17 +311,16 @@ ul.Opciones li a.active {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: #706e6e; /* texto negro */
+    color: #706e6e;
   }
   
   .footer-options li {
     margin-bottom: 10px;
-     /* espaciado entre elementos */
   }
   
   .footer-options a {
     text-decoration: none;
-    color: #6d6a6a; /* texto negro */
+    color: #6d6a6a;
   }
   
   .footer-options a:hover {
