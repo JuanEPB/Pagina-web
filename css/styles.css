@@ -1,48 +1,60 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-header {
-    position: fixed;
+body {
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap;
+}
+
+.navegacion {
+flex-wrap: wrap;
     width: 100%;
     top: 0;
     left: 0;
     transition: background-color 0.3s ease; 
     z-index: 1000;
     padding: 40px 20px;
+    padding: 1em;
     background-color: #f7f7f7;
-}
-
-
-header.transparent {
-    background-color: rgba(157, 157, 157, 0); 
-}
-
-header.solid {
-    background-color: rgba(243, 243, 243, 1); 
-}
-
-header h1 {
-    margin: 0;
-    color: #0D0D0D;
-    font-weight: bold;
-    font-size:200%;
-}
-
-.container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  background-color: #f7f7f7;
+}
+.navbar{
+  padding: 0;
+}
+.navbar-nav {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navbar-toggler-icon{
+  justify-items: end;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+.container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 .h1, .logo, .opciones {
     flex: 1;
+    align-items: center;
 }
+
 
 ul.Opciones {
     list-style-type: none;
@@ -51,9 +63,9 @@ ul.Opciones {
     display: flex;
     align-items: end;
     justify-content: flex-end;
-    margin-left: 20px;
+    
 }
-div.opciones{
+div.Opciones{
     justify-content: flex-end;
     
 }
@@ -77,14 +89,14 @@ ul.Opciones li a.active {
 
 .Inicio {
     position: relative;
-    height: 600px;
+    height: 100vh;
     width: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .Inicio .background-image {
@@ -96,6 +108,7 @@ ul.Opciones li a.active {
     background-image: url(/img/inicio.jpeg);
     background-size: cover;
     background-position: center;
+    object-fit: cover; /* Agrego object-fit: cover */
     opacity: 0.5; 
 }
 .Inicio::before {
@@ -123,50 +136,96 @@ ul.Opciones li a.active {
     max-width: 600px;
     margin: 20px 0;
     padding: 0 20px;
+}/* Estilos para el contenedor de productos */
+
+
+/* Estilos para el título del catálogo */
+.titulo {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-
-.Productos {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    padding: 20px 0;
-    margin: 0;
-    margin-left: 100px;
-    width: 90%;
+/* Estilos para el contenedor de productos */
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.catalogo {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+  display: grid;
+    justify-content: space-between;
+    margin-left: 200px;
+    margin-right: 100px; /* Agrega un ancho máximo para que no se desborde en pantallas grandes */
 }
 
-.card1 {
-    flex: 1;
-    margin: 0 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
+.slider-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  padding: 10px;
+  gap: 10px;
+  scrollbar-width: thin; /* Agrega un scrollbar delgado */
+  scrollbar-color: #ccc #f0f0f0; /* Cambia el color del scrollbar */
 }
 
-.titulop {
-    text-align: center;
-    font-size: 50px;
-    margin: 70px 0; 
+.slider-item {
+  flex: 0 0 auto;
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+  margin: 10px; /* Agrega un margen para separar los elementos */
+  justify-content: space-between;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin: 10px;
+  width: 30%;
 }
 
-.boton {
-    text-align: center;
-    margin: 20px 0; 
-    
+.slider-item img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px 8px 0 0; /* Agrega un borde redondeado a la imagen */
 }
 
-.ver {
-    background-color: #6CAFD9;
-    border-radius: 5px;
-    font-size: 20px;
-    color: #FFFFFF;
-    padding: 10px 10px;
-    border: none; 
-    cursor: pointer;
+.slider-item p {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.price{
+  font-size: 16px;
+  font-weight: bold;
+  color: #337ab7;
+  margin-bottom: 20px;
+}
+.btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: none;
+  background-color: #337ab7;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #23527c;
 }
 
 .conocenos {
@@ -175,31 +234,61 @@ ul.Opciones li a.active {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    margin-top: 10px;
 }
 
 .descripcion {
-    flex: 1; 
-    padding: 0 20px; 
+  flex: 1; 
+  margin-bottom: 20px;
 }
 
-.mapa {
-    text-align: center;
-    margin: 20px 0; 
-    flex: 1; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.descripcion h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
+.descripcion p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.descripcion h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.redes {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 20px;
 }
 
 .redes a {
-    display: inline-block;
-    margin-right: 10px; 
+  margin: 0 10px;
 }
 
-.redes a svg {
-    width: 30px; 
-    height: 30px;
-    fill: #000; 
-    transition: fill 0.3s ease; 
+.redes svg {
+  width: 30px;
+  height: 30px;
+  fill: #666;
+  transition: fill 0.2s ease;
+}
+
+.map-container {
+  flex: 1;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.map-container iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  flex-wrap: wrap;
+
 }
 
 .redes a:hover svg.facebook{
@@ -280,7 +369,11 @@ ul.Opciones li a.active {
     width: 600px;
   }
   .formulario textarea {
-    resize: horizontal;
+    width: 75%;
+    min-width: 0;
+  }
+  #message {
+    width: 75%; /* Ancho máximo */
   }
   .formulario button {
     padding: 0.5rem 1rem;
@@ -355,4 +448,90 @@ ul.Opciones li a.active {
 }
 .social-media a:hover svg.twitter-x{
     fill: #829191;
+}
+/* Responsive Design */
+
+/* Agregar esto para hacer responsive el diseño */
+
+
+@media (max-width: 932px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body, html {
+    width: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+  }
+  .navbar-nav {
+    justify-content: end;
+  }
+  .navegacion{
+    flex-direction: column;
+    align-items: center;
+  }
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .logo{
+    justify-content: center;
+    flex-direction: column;
+  }
+  ul navbar-nav{
+    align-items: center;
+    border: 1px solid #000000;
+  }
+  header nav ul {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  header nav ul li {
+    margin: 0;
+    margin-bottom: 10%;
+  }
+  .slider-container {
+    display: flex;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    padding: 10px;
+    gap: 10px;
+  }
+  .slider-item {
+    flex: 0 0 auto;
+    width: 100%; /* Ajusta al ancho disponible */
+    max-width: 200px; /* Limita el tamaño máximo */
+    box-sizing: border-box;
+  }
+  .map-container {
+    height: 250px;
+  }
+  .conocenos {
+    flex-direction: column;
+  }
+  .Contactanos {
+    flex-direction: column;
+    width: 100%;
+    margin: 30px 0;
+  }
+  .whatsapp {
+    margin-top: 10px;
+    width: 100%;
+  }
+  input[type="text"], #message {
+    width: 50%; /* Ajusta al ancho disponible */
+    padding: 10px;
+    margin-right: 10px;
+  }
+  .formulario{
+    margin-right: 10px;
+
+  }
+  label {
+    display: block;
+  }
+  footer{
+    flex-direction: column;
+  }
 }

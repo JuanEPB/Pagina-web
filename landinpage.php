@@ -1,4 +1,21 @@
-<?php include 'conexion.php'; ?>
+<?php 
+include 'conexion.php';
+
+// Configuración de la paginación
+$products_per_page = isset($_GET['et_per_page']) ? (int)$_GET['et_per_page'] : 4;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $products_per_page;
+
+// Obtener el número total de productos
+$total_products_sql = "SELECT COUNT(*) as total FROM productos";
+$total_products_result = $conn->query($total_products_sql);
+$total_products = $total_products_result->fetch_assoc()['total'];
+
+// Obtener los productos para la página actual
+$sql = $products_per_page == -1 ? "SELECT * FROM productos" : "SELECT * FROM productos LIMIT $offset, $products_per_page";
+$result = $conn->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,69 +24,118 @@
     <title>Productos</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/productos.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
+    <!-- CSS only -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    </head>
+    <body>
     <header>
-        <div class="container">
-            <div class="h1">
-                <h1 id="Inicio">PRAICOM</h1>
-            </div>
-            <div class="logo">        
-                <img src="./img/logo.png" width="250" height="" />
-            </div>
-            <div class="opciones">
-                <ul class="Opciones">
-                    <li><a href="#Inicio">Inicio</a></li>
-                    <li><a href="#Productos">Productos</a></li>
-                    <li><a href="#Conocenos">Conocenos</a></li>
-                    <li><a href="#Contactanos">Contactanos</a></li>
+    <div class="logo" >
+        <div class="imagelogo">
+        <img src="./img/logo.png" width="350" height="" alt="Logo de la empresa">
+        </div>
+        <div class="navegacion w-100 justify-content-end">
+            <nav class="navbar navbar-light bg-light w-100">
+            <nav class="navbar navbar-expand-lg justify-content-end">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarToggleExternalContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#conocenos">Conocenos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contactanos">Contactanos</a>
+                </li>
                 </ul>
             </div>
+            </nav>
+            </nav>
         </div>
+    </div>
     </header>
+    <main>
+    <section>
     <div class="Inicio">
         <div class="contenido">
-            <H1>Conoce nuestros productos</H1>
+            <h1>Conoce nuestros productos</h1>
             <h3>
                 Conoce la variedad de productos que tenemos disponibles
                 para tus proyectos de aire comprimido
             </h3>
         </div>
     </div>
-
-    <div class="container mt-100 product-grid">
-        <?php
-            $sql = "SELECT * FROM productos";
-            $result = $conn->query($sql);
+    </section>
+    <section>
+    <h1 class="productos">Productos por pagina</h1>
+    <div class="select-container">
+        <div class="titulog">
+        </div>
+        <div class="select">
+        <form method="GET" action="">
+            <select name="et_per_page" id="et_per_page" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
+                <option value="4" <?php if ($products_per_page == 4) echo 'selected'; ?>>4</option>
+                <option value="8" <?php if ($products_per_page == 8) echo 'selected'; ?>>8</option>
+                <option value="12" <?php if ($products_per_page == 12) echo 'selected'; ?>>12</option>
+                <option value="20" <?php if ($products_per_page == 20) echo 'selected'; ?>>20</option>
+                <option value="-1" <?php if ($products_per_page == -1) echo 'selected'; ?>>Todos</option>
+            </select>
+        </form>
+        </div>
+    </div>
+    <div class="containerpro">
+        <div class="container mt-100 product-grid">
+            <div class="row justify-content-center">
+                <?php
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo '<div class="col-md-3 col-sm-6 mb-30">';
+                            echo '<div class="card">';
+                            echo '<a class="card-img-tiles" href="#" data-abc="true">';
+                            echo '<div class="inner">';
+                            echo '<div class="thumblist"><img src="data:image/jpg;charset=utf8;base64,'. base64_encode($row['image']). '"></div>';
+                            echo '</div>';
+                            echo '</a>';
+                            echo '<div class="card-body text-center">';
+                            echo '<h4 class="card-title">'. $row['name']. '</h4>';
+                            echo '<p class="text-muted">'. $row['description']. '</p>';
+                            echo '<p class="text-price">'. $row['price'].'</p>';
+                            echo '<a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "No hay productos disponibles";
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+            <?php
+                if ($products_per_page != -1) {
+                    $total_pages = ceil($total_products / $products_per_page);
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        echo '<a href="?page=' . $i . '&et_per_page=' . $products_per_page . '"';
+                        if ($page == $i) echo ' class="active"';
+                        echo '>' . $i . '</a>';
+                    }
+                }
+            ?>
+        </div>
+        </section>
             
 
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo '<div class="row">';
-                    echo '<div class="col-md-4 col-sm-6">';
-                    echo '<div class="card mb-30">';
-                    echo '<a class="card-img-tiles" href="#" data-abc="true">';
-                    echo '<div class="inner">';
-                    echo '<div class="thumblist" > <img src="data:image/jpg;charset=utf8;base64,'. base64_encode($row['image']). '"> </div>';
-                    echo '</div>';
-                    echo '</a>';
-                    echo '<div class="card-body text-center">';
-                    echo '<h4 class="card-title">'. $row['name']. '</h4>';
-                    echo '<p class="text-muted">'. $row['description']. '</p>';
-                    echo '<a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo "No hay productos disponibles";
-            }
-       ?>
-    </div>
-<footer>
+        </main>
+        <footer>
     <div class="social-media">
     <h2> PRAICOM</h2>
     
@@ -106,19 +172,6 @@
         <li><a href="#Contactanos">Informacion de contacto</a></li>
     </ul>
 </footer>
-<script>
-    const $form = document.querySelector('#form')
-    const $buttonMailto = document.querySelector('#trucazo')
 
-    $form.addEventListener('submit', handleSubmit)
-
-    function handleSubmit(event) {
-            event.preventDefault();
-            const form = new FormData($form);
-            const subject = encodeURIComponent(form.get('subject'));
-            const body = encodeURIComponent(form.get('message'));
-            $buttonMailto.setAttribute('href', `mailto:al222210749@gmail.com?subject=${subject}&body=${body}`);
-            $buttonMailto.click();
-        }
-  </script>
+</body>
 </html>
