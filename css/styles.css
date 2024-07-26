@@ -9,6 +9,24 @@ body {
     font-family: Arial, sans-serif;
     flex-wrap: wrap;
 }
+.contenido {
+  position: relative;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .navegacion {
 flex-wrap: wrap;
@@ -88,38 +106,39 @@ ul.Opciones li a.active {
 }
 
 .Inicio {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
+  position: relative;
+  height: 75vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .Inicio .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(/img/inicio.jpeg);
-    background-size: cover;
-    background-position: center;
-    object-fit: cover; /* Agrego object-fit: cover */
-    opacity: 0.5; 
+  position: absolute;
+  top: 50%; /* Agrego top: 50% */
+  left: 0;
+  width: 100%;
+  height: 100%; /* Agrego height: 100% */
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  opacity: 0.5;
+  transform: translateY(-50%); /* Agrego transform: translateY(-50%) */
 }
+
 .Inicio::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+  z-index: -1;
 }
 
 .Inicio .contenido {
@@ -449,12 +468,30 @@ ul.Opciones li a.active {
 .social-media a:hover svg.twitter-x{
     fill: #829191;
 }
+.card-hover:hover {
+  transform: scale(1.15); /* aumenta el tamaño de la tarjeta */
+  box-shadow: 0 0 10px rgba(55, 72, 255, 0.563); /* agrega una sombra */
+  z-index: 4; /* hace que la tarjeta se superponga sobre otras elementos */
+  background-color: #ababab35;
+  font-size: bold;
+  color: #000000;
+}
+.redes a {
+  margin: 0 10px;
+}
+.redes a svg {
+  transition: transform 0.3s ease;
+}
+.redes a:hover svg {
+  transform: scale(1.2);
+}
+
 /* Responsive Design */
 
 /* Agregar esto para hacer responsive el diseño */
 
 
-@media (max-width: 932px) {
+@media (max-width: 1000px) {
   * {
     box-sizing: border-box;
     margin: 0;
@@ -464,6 +501,35 @@ ul.Opciones li a.active {
     width: 100%;
     overflow-x: hidden; /* Evita el desbordamiento horizontal */
   }
+  .Inicio {
+    position: relative;
+height: 31vh;
+width: 100%;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden; 
+}
+.Inicio .contenido {
+  z-index: 1;
+  margin-top: 8%; 
+  text-align: center;
+  color: rgb(216, 213, 213);
+}
+.Inicio .background-image {
+   position: absolute;
+top: 48%; /* Agrego top: 50% */
+left: 0;
+width: 100%;
+height: 100%; /* Agrego height: 100% */
+background-size: cover;
+background-position: center;
+object-fit: cover;
+opacity: 0.6;
+transform: translateY(-50%);
+}
   .navbar-nav {
     justify-content: end;
   }
@@ -521,6 +587,116 @@ ul.Opciones li a.active {
   }
   input[type="text"], #message {
     width: 50%; /* Ajusta al ancho disponible */
+    padding: 10px;
+    margin-right: 10px;
+  }
+  .formulario{
+    margin-right: 10px;
+
+  }
+  label {
+    display: block;
+  }
+  footer{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body, html {
+    width: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+  }
+  .Inicio {
+    height: 25vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+  }
+  .Inicio .contenido {
+    z-index: 1;
+    margin-top: 10%; 
+    text-align: center;
+    color: rgb(216, 213, 213);
+  }
+  .Inicio .background-image {
+    position: absolute;
+    top: 45%; /* Agrego top: 50% */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Agrego height: 100% */
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    opacity: 0.6;
+    transform: translateY(-50%);
+  }
+  .navbar-nav {
+    justify-content: end;
+  }
+  .navegacion{
+    flex-direction: column;
+    align-items: center;
+  }
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .logo{
+    justify-content: center;
+    flex-direction: column;
+  }
+  ul navbar-nav{
+    align-items: center;
+    border: 1px solid #000000;
+  }
+  header nav ul {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  header nav ul li {
+    margin: 0;
+    margin-bottom: 15%;
+  }
+  .slider-container {
+    display: flex;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    padding: 10px;
+    gap: 10px;
+  }
+  .slider-item {
+    flex: 0 0 auto;
+    width: 100%; /* Ajusta al ancho disponible */
+    max-width: 150px; /* Limita el tamaño máximo */
+    box-sizing: border-box;
+  }
+  .map-container {
+    height: 200px;
+  }
+  .conocenos {
+    flex-direction: column;
+  }
+  .Contactanos {
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 0;
+  }
+  .whatsapp {
+    margin-top: 10px;
+    width: 100%;
+  }
+  input[type="text"], #message {
+    width: 70%; /* Ajusta al ancho disponible */
     padding: 10px;
     margin-right: 10px;
   }

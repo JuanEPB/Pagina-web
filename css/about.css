@@ -1,0 +1,31 @@
+.datos {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mision, .vision, .valores {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .mision .img, .valores .img {
+    order: 2;
+    margin-left: 20px;
+  }
+  
+  .vision .img {
+    order: 1;
+    margin-right: 20px;
+  }
+  
+  .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  img {
+    width: 100px;
+    
+  }

@@ -40,6 +40,7 @@
 }
 
 .card-body {
+    text-align: center;
     padding: 20px;
 }
 .title{
@@ -127,6 +128,7 @@
     .select-container{
         flex-direction: column;
         justify-content: center;
+        margin-right: 100px;
     }
     .containerpro {
         display: grid;

@@ -64,14 +64,33 @@ $result = $conn->query($sql);
     <main>
     <section>
     <div class="Inicio">
-        <div class="contenido">
-            <h1>Conoce nuestros productos</h1>
-            <h3>
-                Conoce la variedad de productos que tenemos disponibles
-                para tus proyectos de aire comprimido
-            </h3>
+    <div class="background-image">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/aire1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire3.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire4.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire5.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
         </div>
     </div>
+    <div class="contenido">
+        <h2> PRAICOM</h2>
+        <p>En  PRAICOM nos enorgullecemos de ofrecer soluciones integrales para sistemas de aire comprimido. Con años de experiencia en la industria, nuestro equipo está comprometido a proporcionar productos de calidad y un servicio excepcional a nuestros clientes en todo momento.</p>
+        
+    </div>
+</div>
     </section>
     <section>
     <h1 class="productos">Productos por pagina</h1>
@@ -137,7 +156,8 @@ $result = $conn->query($sql);
         </main>
         <footer>
     <div class="social-media">
-    <h2> PRAICOM</h2>
+    <div class="text-muted">&copy; PRAICOM <script>new Date().getFullYear()>2010&&document.write(""+new Date().getFullYear());</script>.
+                            </div>
     
     <a href="https://www.facebook.com/">
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" fill="currentColor" class="facebook" viewBox="0 0 16 16">

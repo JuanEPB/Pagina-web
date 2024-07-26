@@ -87,7 +87,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Productos     <button class="btn btn-primary newProduct" data-bs-toggle="modal" data-bs-target="#productForm">Nuevo Producto <i class="bi bi-box"></i></button>
+        Productos     <button class="btn btn-success newProduct" data-bs-toggle="modal" data-bs-target="#productForm">Nuevo Producto <i class="bi bi-box"></i></button>
     </div>
     <div class="card-body">
         <table class="table datatables-simple" id="datatablesSimple2">
@@ -102,8 +102,8 @@ if (!isset($_SESSION['user_id'])) {
                     <th>Action</th>
                 </tr>
             </thead>
-            <!-- cuerpo de la tabla -->
-            <tbody><?php
+            <tbody>
+                <?php
                 include 'conexion.php';
                 $sql = $conn->query("SELECT * FROM productos");
 
@@ -123,8 +123,8 @@ if (!isset($_SESSION['user_id'])) {
                         <td><?= htmlspecialchars($datos->description)?></td>
                         <td><?= htmlspecialchars($datos->price)?></td>
                         <td>
-                            <a href="edit_product.php?id=<?= htmlspecialchars($datos->id)?>" class="btn btn-primary">Editar<i class="bi bi-pen"></i></a>
-                            <button class="btn btn-primary" onclick="location.href='delete_product.php?id=<?= htmlspecialchars($datos->id)?>'">Borrar<i class="bi bi-trash"></i></button>                    </td>
+                            <a href="edit_product.php?id=<?= htmlspecialchars($datos->id)?>" class="btn btn-warning">Editar<i class="bi bi-pen"></i></a>
+                            <button class="btn btn-danger" onclick="location.href='delete_product.php?id=<?= htmlspecialchars($datos->id)?>'">Borrar<i class="bi bi-trash"></i></button>                    </td>
                     </tr>
                 <?php
                 }
@@ -133,48 +133,57 @@ if (!isset($_SESSION['user_id'])) {
         </table>
     </div>
 </div>
+<!-- Modal para agregar nuevo producto -->
+<div class="modal fade" id="productForm">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-light">
+            <div class="modal-header bg-secondary" style="display=flex display: flex flex-wrap: wrap justify-content:space-between">
+                <h4 class="modal-title">Nuevo Producto</h4>
+                <img src="./img/LOGOD.png" alt="" width="100" height="100" class="img-fluid" >
 
-                <!-- Modal para agregar nuevo producto -->
-                <div class="modal fade" id="productForm">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Nuevo Producto</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="add_product.php" method="POST" id="myForm" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card imgholder">
+                                <label for="imgInput" class="upload">
+                                    <input type="file" name="image" id="imgInput">
+                                    <i class="bi bi-plus-circle-dotted"></i> Subir Imagen
+                                </label>
+                                <img src="./img/logo.png" alt="" width="200" height="200" class="img-fluid">
                             </div>
-                            <div class="modal-body">
-                                <form action="add_product.php" method="POST" id="myForm" enctype="multipart/form-data">
-                                    <div class="card imgholder">
-                                        <label for="imgInput" class="upload">
-                                            <input type="file" name="image" id="imgInput">
-                                            <i class="bi bi-plus-circle-dotted"></i> Subir Imagen
-                                        </label>
-                                        <img src="./image/default-image.png" alt="" width="200" height="200" class="img">
-                                    </div>
-                                    <div class="inputField">
-                                        <div>
-                                            <label for="name">Nombre del producto:</label>
-                                            <input type="text" name="name" id="name" required>
-                                        </div>
-                                        <div>
-                                            <label for="description">Descripción del producto:</label>
-                                            <textarea name="description" id="description" required></textarea>
-                                        </div>
-                                        <div>
-                                            <label for="price">Precio del producto:</label>
-                                            <input type="number" name="price" id="price" required>
-                                        </div>
-                                    </div>
-                                    <td>
-                                    <button class="btn btn-primary" id="saveButton" onclick="location.href='add_product.php?'">Guardar</button>
-                <button class="btn btn-secondary" id="cancelButton" onclick="location.href='index.php'">Cancelar</button>
-                </td>
-                                </form>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="inputField">
+                                <div class="form-group">
+                                    <label for="name">Nombre del producto:</label>
+                                    <input class="" type="text" name="name" id="name" required class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Descripción del producto:</label>
+                                    <textarea name="description" id="description" required class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Precio del producto:</label>
+                                    <input type="number" name="price" id="price" required class="form-control">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <footer class="py-4 bg-light mt-auto">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-success" id="saveButton" onclick="location.href='add_product.php?'">Guardar</button>
+                            <button class="btn btn-danger" id="cancelButton" onclick="location.href='index.php'">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">&copy; PRAICOM <script>new Date().getFullYear()>2010&&document.write(""+new Date().getFullYear());</script>.

@@ -1,7 +1,7 @@
 <?php 
 include 'conexion.php';
 
-?>
+?> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,8 +28,6 @@ include 'conexion.php';
     });
         });
     </script>
-
-
 </head>
 <body>
 <header>
@@ -66,47 +64,88 @@ include 'conexion.php';
     </header>
     <main>
     <div class="Inicio">
-        <div class="background-image"></div>
-        <div class="contenido">
-            <h2> PRAICOM</h2>
-            <p>En  PRAICOM nos enorgullecemos de ofrecer soluciones integrales para sistemas de aire comprimido. Con años de experiencia en la industria, nuestro equipo está comprometido a proporcionar productos de calidad y un servicio excepcional a nuestros clientes en todo momento.</p>
-        </div>
-    </div>
-    <section>
-    
-    <div class="conteiner2">
-        <div class="catalogo">
-            <h2 class="titulo">Productos Populares</h2>
-            <div class="slider-container">
-                <?php
-                    include 'conexion.php';
-                    $sql = $conn->query("SELECT id, name, description, image, price FROM productos LIMIT 10");
-
-                    while ($datos = $sql->fetch_object()) {
-                        // Verificar el tipo MIME de la imagen y codificar en base64
-                        $imageType = 'image/jpeg'; // Cambiar según el tipo real de la imagen almacenada
-                        if ($datos->image) {
-                            $imageSrc = "data:$imageType;base64,". base64_encode($datos->image);
-                        } else {
-                            $imageSrc = './image/default-image.png'; // Imagen por defecto si no hay imagen en la base de datos
-                        }
-                    ?>
-                    <div class="slider-item">
-                        <img src="<?= htmlspecialchars($imageSrc)?>" width="100%" alt="Product Image">
-                        <p><?= htmlspecialchars($datos->name)?></p>
-                        <p><?= htmlspecialchars($datos->description)?></p>
-                        <p class="price">$<?= htmlspecialchars($datos->price)?></p>
-                        <!-- You can add a button here if you want -->
-                        <!-- <a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a> -->
-                    </div>
-                    <?php } ?>
-                        
+    <div class="background-image">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/aire1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire3.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire4.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/aire5.jpg" class="d-block w-100" alt="...">
+                </div>
             </div>
-            <a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
         </div>
     </div>
-  </section>
-  
+    <div class="contenido">
+        <h2> PRAICOM</h2>
+        <p>En  PRAICOM nos enorgullecemos de ofrecer soluciones integrales para sistemas de aire comprimido. Con años de experiencia en la industria, nuestro equipo está comprometido a proporcionar productos de calidad y un servicio excepcional a nuestros clientes en todo momento.</p>
+        
+    </div>
+</div>
+    <section>
+    <div class="container">
+        <h2 class="titulo">Productos Populares</h2>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            <?php
+                include 'conexion.php';
+                $sql = $conn->query("SELECT id, name, description, image, price FROM productos LIMIT 10");
+
+                $i = 0;
+                $productos = array();
+                while ($datos = $sql->fetch_object()) {
+                $productos[] = $datos;
+                }
+            ?>
+            <?php foreach ($productos as $index => $producto) { ?>
+                <?php if ($index % 3 == 0) { ?>
+                <div class="carousel-item <?php if ($index == 0) echo 'active'; ?>">
+                    <div class="row">
+                <?php } ?>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                        <?php
+                            // Verificar el tipo MIME de la imagen y codificar en base64
+                            $imageType = 'image/jpeg'; // Cambiar según el tipo real de la imagen almacenada
+                            if ($producto->image) {
+                            $imageSrc = "data:$imageType;base64,". base64_encode($producto->image);
+                            } else {
+                            $imageSrc = './image/default-image.png'; // Imagen por defecto si no hay imagen en la base de datos
+                            }
+                        ?>
+                        <img src="<?= htmlspecialchars($imageSrc)?>" class="card-img-top" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($producto->name)?></h5>
+                            <p class="text-muted"><?= htmlspecialchars($producto->description)?></p>
+                            <p class="text-price">$<?= htmlspecialchars($producto->price)?></p>
+                        </div>
+                        </div>
+                    </div>
+                <?php if (($index + 1) % 3 == 0 || $index == count($productos) - 1) { ?>
+                    </div>
+                </div>
+                <?php } ?>
+            <?php } ?>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+
+        </div>        
+                </div>   
 <section>
     <div class="conocenos" id="Conocenos">
         <div class="descripcion">
@@ -181,8 +220,8 @@ include 'conexion.php';
 </main>
 <footer>
     <div class="social-media">
-    <h2> PRAICOM</h2>
-    
+    <div class="text-muted">&copy; PRAICOM <script>new Date().getFullYear()>2010&&document.write(""+new Date().getFullYear());</script>.
+    </div>    
     <a href="https://www.facebook.com/">
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" fill="currentColor" class="facebook" viewBox="0 0 16 16">
             <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
@@ -202,18 +241,17 @@ include 'conexion.php';
     
     <ul class="footer-options">
         <li><a href="#Inicio">Inicio</a></li>
-        <li><a href="#Productos">Productos Populares</a></li>
-        <li><a href="#Conocenos">Conocenos</a></li>
-        <li><a href="#Contactanos">Contactanos</a></li>
+        <li><a href="landinpage.php">Productos Populares</a></li>
+        <li><a href="#conocenos">Conocenos</a></li>
+        <li><a href="#contactanos">Contactanos</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Airpaipe</a></li>
-        <li><a href="#">Deco</a></li>
+        <li><a href="landinpage.php">Productos</a></li>
+        <li><a href="landinpage.php">Airpaipe</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="#Contactanos">Contactanos</a></li>
-        <li><a href="#Contactanos">Informacion de contacto</a></li>
+        <li><a href="#contactanos">Contactanos</a></li>
+        <li><a href="#contactanos">Informacion de contacto</a></li>
     </ul>
 </footer>
 <script>
