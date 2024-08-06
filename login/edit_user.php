@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 // Código de la página dashboard.php
 ?>
 <?php
-include 'conexion.php';
+include '../conexion.php';
 
 $id = $_GET['id'];
 $sql = $conn->query("SELECT * FROM users WHERE id = $id");
@@ -30,7 +30,7 @@ $data = $sql->fetch_object();
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="./css/edit.css">
+    <link rel="stylesheet" href="../css/edit.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -42,7 +42,7 @@ $data = $sql->fetch_object();
             <div class="col-md-6 offset-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="./img/logo.png" width="100"/>
+                        <img src="../img/logo.png" width="100"/>
                         <h2 class="card-title">Actualizar Perfil</h2>
                         <hr>
                         <form action="update_user.php" method="post" enctype="multipart/form-data">

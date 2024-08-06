@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple, {
             labels: {
                 placeholder: "Buscar...",
-                perPage: "Mostrar {select} registros por página",
+                perPage: "Mostrar registros por página",
                 noRows: "No se encontraron registros",
                 info: "Mostrando {start} a {end} de {rows} registros"
             },
@@ -27,7 +27,26 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple2, {
             labels: {
                 placeholder: "Buscar...",
-                perPage: "Mostrar {select} registros por página",
+                perPage: "Mostrar registros por página",
+                noRows: "No se encontraron registros",
+                info: "Mostrando {start} a {end} de {rows} registros"
+            },
+            nextPrev: {
+                next: "Siguiente",
+                prev: "Anterior"
+            },
+            sort: {
+                sortAscending: "Activar para ordenar de manera ascendente",
+                sortDescending: "Activar para ordenar de manera descendente"
+            }
+        });
+    }
+    const datatablesSimple3 = document.getElementById('datatablesSimple3');
+    if (datatablesSimple3) {
+        new simpleDatatables.DataTable(datatablesSimple3, {
+            labels: {
+                placeholder: "Buscar...",
+                perPage: "Mostrar registros por página",
                 noRows: "No se encontraron registros",
                 info: "Mostrando {start} a {end} de {rows} registros"
             },

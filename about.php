@@ -44,14 +44,14 @@ include 'conexion.php';
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarToggleExternalContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 w-100 justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="#inicio">Inicio</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#productos">Productos</a>
+            <a class="nav-link" href="./landinpage.php">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#conocenos">Conocenos</a>
+            <a class="nav-link" href="./about.php">Conocenos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contactanos">Contactanos</a>
@@ -258,14 +258,14 @@ include 'conexion.php';
 </div>
     
     <ul class="footer-options">
-        <li><a href="#Inicio">Inicio</a></li>
-        <li><a href="landinpage.php">Productos Populares</a></li>
-        <li><a href="#conocenos">Conocenos</a></li>
+        <li><a href="./index.php">Inicio</a></li>
+        <li><a href="./landinpage.php">Productos Populares</a></li>
+        <li><a href="./about.php">Conocenos</a></li>
         <li><a href="#contactanos">Contactanos</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="landinpage.php">Productos</a></li>
-        <li><a href="landinpage.php">Airpaipe</a></li>
+        <li><a href="./landinpage.php">Productos</a></li>
+        <li><a href="./landinpage.php">Airpaipe</a></li>
     </ul>
     <ul class="footer-options">
         <li><a href="#contactanos">Contactanos</a></li>

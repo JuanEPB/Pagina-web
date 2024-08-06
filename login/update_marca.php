@@ -1,15 +1,12 @@
 <?php
 // Incluir archivo de conexión
-include 'conexion.php';
+include '../conexion.php';
 
 // Verificar si el formulario fue enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recibir y validar los datos del formulario
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-    $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     $image = $_FILES['image'];
 
     // Verificar si el campo de imagen está seteado y es válido
@@ -35,25 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Preparar la consulta SQL utilizando consultas preparadas
-    $query = "UPDATE users SET ";
+    $query = "UPDATE marcas SET ";
     $params = array();
 
     if (!empty($name)) {
         $query .= "name = ?, ";
         $params[] = $name;
-    }
-    if (!empty($lastname)) {
-        $query .= "lastname = ?, ";
-        $params[] = $lastname;
-    }
-    if (!empty($email)) {
-        $query .= "email = ?, ";
-        $params[] = $email;
-    }
-    if (!empty($password)) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query .= "password = ?, ";
-        $params[] = $hashed_password;
     }
     if ($image_data !== null) {
         $query .= "image = ?, ";
@@ -71,12 +55,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
-            echo 'Usuario actualizado con éxito!';
-            header('Location: usuarios.php');
+            echo '<!DOCTYPE html>
+            <html lang="es">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Marca actualizada</title>
+              <!-- Incluir SweetAlert2 -->
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+            </head>
+            <body>
+              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+              <script>
+                Swal.fire({
+                  title: "¡Marca actualizada!",
+                  text: "La Marca ha sido actualizada con éxito.",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then(() => {
+                  window.location.href = "marca.php";
+                });
+              </script>
+            </body>
+            </html>';
             exit;
         } else {
-            error_log("Error al actualizar usuario: ". $stmt->error);
-            echo 'Error al actualizar usuario: '. $stmt->error;
+            error_log("Error al actualizar Marca: ". $stmt->error);
+            echo 'Error al actualizar Marca: '. $stmt->error;
         }
 
         $stmt->close();

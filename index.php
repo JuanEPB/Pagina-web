@@ -44,13 +44,13 @@ include 'conexion.php';
       <div class="collapse navbar-collapse justify-content-end" id="navbarToggleExternalContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 w-100 justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="#inicio">Inicio</a>
+            <a class="nav-link" href="./index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#productos">Productos</a>
+            <a class="nav-link" href="./landinpage.php">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#conocenos">Conocenos</a>
+            <a class="nav-link" href="./about.php">Conocenos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contactanos">Contactanos</a>
@@ -93,12 +93,12 @@ include 'conexion.php';
 </div>
     <section>
     <div class="container">
-        <h2 class="titulo">Productos Populares</h2>
+        <h2 class="titulo">Marcas Populares</h2>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
             <?php
                 include 'conexion.php';
-                $sql = $conn->query("SELECT id, name, description, image, price FROM productos LIMIT 10");
+                $sql = $conn->query("SELECT id, name, image FROM marcas LIMIT 10");
 
                 $i = 0;
                 $productos = array();
@@ -125,9 +125,8 @@ include 'conexion.php';
                         <img src="<?= htmlspecialchars($imageSrc)?>" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($producto->name)?></h5>
-                            <p class="text-muted"><?= htmlspecialchars($producto->description)?></p>
-                            <p class="text-price">$<?= htmlspecialchars($producto->price)?></p>
                         </div>
+
                         </div>
                     </div>
                 <?php if (($index + 1) % 3 == 0 || $index == count($productos) - 1) { ?>
@@ -143,10 +142,8 @@ include 'conexion.php';
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
         </div>
-
         </div>        
-                </div>   
-<section>
+                </div> 
     <div class="conocenos" id="Conocenos">
         <div class="descripcion">
         <h2>Conocenos</h2>
@@ -190,14 +187,15 @@ include 'conexion.php';
 <section>
     <div class="Contactanos" id="Contactanos">
         
-    <div class="whatsapp">
+    <div class="whatsapp" >
         <h2>Contactanos</h2>
         <p>Envianos un mensaje directo o un correo electronico para la cotizacion de tu proyecto.</p>
 
         <h3>Whatsapp</h3>
         <a href="https://wa.me/527291270777?text=Hola%20quiero%20una%20cotizacion!" target="_blank" class="btn-whatsapp">
-            <i class="fab fa-whatsapp"><p>WhatsApp</p></i> 
-          </a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg>          </a>
     </div>
         <div class="formulario">
             <form id="form" action="" class="form">
@@ -240,14 +238,14 @@ include 'conexion.php';
 </div>
     
     <ul class="footer-options">
-        <li><a href="#Inicio">Inicio</a></li>
-        <li><a href="landinpage.php">Productos Populares</a></li>
-        <li><a href="#conocenos">Conocenos</a></li>
+        <li><a href="./index.php">Inicio</a></li>
+        <li><a href="./landinpage.php">Productos Populares</a></li>
+        <li><a href="./about.php">Conocenos</a></li>
         <li><a href="#contactanos">Contactanos</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="landinpage.php">Productos</a></li>
-        <li><a href="landinpage.php">Airpaipe</a></li>
+        <li><a href="./landinpage.php">Productos</a></li>
+        <li><a href="./landinpage.php">Airpaipe</a></li>
     </ul>
     <ul class="footer-options">
         <li><a href="#contactanos">Contactanos</a></li>

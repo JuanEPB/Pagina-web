@@ -18,8 +18,8 @@ if (!isset($_SESSION['user_id'])) {
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/dashboard.css" rel="stylesheet" />
-        <link href="css/crud.css" rel="stylesheet" />
+        <link href="../css/dashboard.css" rel="stylesheet" />
+        <link href="../css/crud.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_id'])) {
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href=""><img src="./img/LOGOD.png" width="200"/></a>
+            <a class="navbar-brand ps-3" href=""><img src="../img/LOGOD.png" width="200"/></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -65,6 +65,10 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Usuarios
                             </a>
+                            <a class="nav-link" href="marca.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Marcas
+                            </a>
                             <div class="sb-sidenav-footer">
                                 <div class="small">Sesion iniciada</div>
                                 <p>Usuario: <?php echo $_SESSION['user_name'];?></p>
@@ -98,7 +102,7 @@ if (!isset($_SESSION['user_id'])) {
             <!-- cuerpo de la tabla -->
             <tbody>
                 <?php
-                include 'conexion.php';
+                include '../conexion.php';
                 $sql = $conn->query("SELECT * FROM users");
 
                 while ($datos = $sql->fetch_object()) {
@@ -136,32 +140,67 @@ if (!isset($_SESSION['user_id'])) {
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Imagen</th>
-                    <th>Nombre del producto</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
+                    <th>Nombre</th>
+                    <th>Nombre del archivo</th>
+                    <th>Ruta</th>
                 </tr>
             </thead>
             <!-- cuerpo de la tabla -->
-            <tbody><?php
-                include 'conexion.php';
+            <tbody>
+            <?php
+                include '../conexion.php';
                 $sql = $conn->query("SELECT * FROM productos");
+
+                while ($datos = $sql->fetch_object()) {
+                    // Verificar el tipo MIME de la imagen y codificar en base64
+            
+                ?>
+                    <tr>
+                        <td><?= htmlspecialchars($datos->id)?></td>
+                        <td><?= htmlspecialchars($datos->name)?></td>
+                        <td><?= htmlspecialchars($datos->file_name)?></td>
+                        <td><?= htmlspecialchars($datos->file_path)?></td>
+                        </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Marcas
+    </div>
+    <div class="card-body">
+        <table class="table datatables-simple" id="datatablesSimple3">
+            <!-- cabecera de la tabla -->
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include '../conexion.php';
+                $sql = $conn->query("SELECT * FROM marcas");
 
                 while ($datos = $sql->fetch_object()) {
                     // Verificar el tipo MIME de la imagen y codificar en base64
                     $imageType = 'image/jpeg'; // Cambiar según el tipo real de la imagen almacenada
                     if ($datos->image) {
-                        $imageSrc = "data:$imageType;base64,". base64_encode($datos->image);
+                        $imageSrc = "data:$imageType;base64," . base64_encode($datos->image);
                     } else {
                         $imageSrc = './image/default-image.png'; // Imagen por defecto si no hay imagen en la base de datos
                     }
                 ?>
                     <tr>
-                        <td><?= htmlspecialchars($datos->id)?></td>
-                        <td><img src="<?= htmlspecialchars($imageSrc)?>" width="100" alt="Product Image"></td>
-                        <td><?= htmlspecialchars($datos->name)?></td>
-                        <td><?= htmlspecialchars($datos->description)?></td>
-                        <td><?= htmlspecialchars($datos->price)?></td>
+                        <td><?= htmlspecialchars($datos->id) ?></td>
+                        <td><img src="<?= htmlspecialchars($imageSrc) ?>" width="100" alt="User Image"></td>
+                        <td><?= htmlspecialchars($datos->name) ?></td>
                     </tr>
                 <?php
                 }
@@ -170,6 +209,7 @@ if (!isset($_SESSION['user_id'])) {
         </table>
     </div>
 </div>
+
                     </div>
                 </main>
                 
@@ -205,6 +245,10 @@ window.addEventListener('DOMContentLoaded', event => {
     const datatablesSimple2 = document.getElementById('datatablesSimple2');
     if (datatablesSimple2) {
         new simpleDatatables.DataTable(datatablesSimple2);
+    }
+    const datatablesSimple3 = document.getElementById('datatablesSimple3');
+    if (datatablesSimple3) {
+        new simpleDatatables.DataTable(datatablesSimple3);
     }
 });
 </script>

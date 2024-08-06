@@ -1,21 +1,4 @@
-<?php 
-include 'conexion.php';
 
-// Configuración de la paginación
-$products_per_page = isset($_GET['et_per_page']) ? (int)$_GET['et_per_page'] : 4;
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$offset = ($page - 1) * $products_per_page;
-
-// Obtener el número total de productos
-$total_products_sql = "SELECT COUNT(*) as total FROM productos";
-$total_products_result = $conn->query($total_products_sql);
-$total_products = $total_products_result->fetch_assoc()['total'];
-
-// Obtener los productos para la página actual
-$sql = $products_per_page == -1 ? "SELECT * FROM productos" : "SELECT * FROM productos LIMIT $offset, $products_per_page";
-$result = $conn->query($sql);
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,14 +26,14 @@ $result = $conn->query($sql);
             <div class="collapse navbar-collapse justify-content-end" id="navbarToggleExternalContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#inicio">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#productos">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#conocenos">Conocenos</a>
-                </li>
+            <a class="nav-link" href="./index.php">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./landinpage.php">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.php">Conocenos</a>
+          </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contactanos">Contactanos</a>
                 </li>
@@ -93,63 +76,58 @@ $result = $conn->query($sql);
 </div>
     </section>
     <section>
-    <h1 class="productos">Productos por pagina</h1>
+    <h1 class="productos">Nuestras marcas principales</h1>
     <div class="select-container">
         <div class="titulog">
         </div>
         <div class="select">
-        <form method="GET" action="">
-            <select name="et_per_page" id="et_per_page" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
-                <option value="4" <?php if ($products_per_page == 4) echo 'selected'; ?>>4</option>
-                <option value="8" <?php if ($products_per_page == 8) echo 'selected'; ?>>8</option>
-                <option value="12" <?php if ($products_per_page == 12) echo 'selected'; ?>>12</option>
-                <option value="20" <?php if ($products_per_page == 20) echo 'selected'; ?>>20</option>
-                <option value="-1" <?php if ($products_per_page == -1) echo 'selected'; ?>>Todos</option>
-            </select>
-        </form>
         </div>
     </div>
     <div class="containerpro">
-        <div class="container mt-100 product-grid">
-            <div class="row justify-content-center">
-                <?php
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo '<div class="col-md-3 col-sm-6 mb-30">';
-                            echo '<div class="card">';
-                            echo '<a class="card-img-tiles" href="#" data-abc="true">';
-                            echo '<div class="inner">';
-                            echo '<div class="thumblist"><img src="data:image/jpg;charset=utf8;base64,'. base64_encode($row['image']). '"></div>';
-                            echo '</div>';
-                            echo '</a>';
-                            echo '<div class="card-body text-center">';
-                            echo '<h4 class="card-title">'. $row['name']. '</h4>';
-                            echo '<p class="text-muted">'. $row['description']. '</p>';
-                            echo '<p class="text-price">'. $row['price'].'</p>';
-                            echo '<a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    } else {
-                        echo "No hay productos disponibles";
-                    }
-                ?>
+    <div class="container mt-100 product-grid">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="./img/Airpipe.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Airpipe</h5>
+                        <p class="card-text">
+                            se enfoca en ofrecer productos de alta calidad, resistentes a la corrosión, vibración, variaciones térmicas y condiciones climáticas extremas. Sus productos están diseñados para garantizar la calidad del aire para los usuarios.
+                        </p>
+                        <a href="./login/uploads/AIRPIPE-comprimido.pdf" download="AIRPIPE.comprimido.pdf" class="btn btn-primary">Ver Catalogo</a>
+                    </div>
+                </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="./img/beko.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Beko</h5>
+                        <p class="card-text">
+                            tecnología de aire comprimido de vanguardia y futura, lo que les permite crear sistemas de aire comprimido inteligentes que satisfacen las necesidades específicas de cada cliente.
+                        </p>
+                        <a href="#" class="btn btn-primary">Ver Catalogo</a>
+                    </div>
+                </div>
+</div>
+            <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                    <img src="./img/smc.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">SMC</h5>
+                        <p class="card-text">
+                            Productos de alta calidad que ofrecen a sus clientes una mayor seguridad al momento de desarrollar sus proyectos de aire comprimido.
+                        </p>
+                        <a href="#" class="btn btn-primary">Ver Catalogo</a>
+                    </div>
+</div>
+</div>
             </div>
         </div>
     </div>
-    <div class="pagination">
-            <?php
-                if ($products_per_page != -1) {
-                    $total_pages = ceil($total_products / $products_per_page);
-                    for ($i = 1; $i <= $total_pages; $i++) {
-                        echo '<a href="?page=' . $i . '&et_per_page=' . $products_per_page . '"';
-                        if ($page == $i) echo ' class="active"';
-                        echo '>' . $i . '</a>';
-                    }
-                }
-            ?>
-        </div>
+</div>
+
+    
         </section>
             
 
@@ -177,15 +155,14 @@ $result = $conn->query($sql);
 </div>
     
     <ul class="footer-options">
-        <li><a href="#Inicio">Inicio</a></li>
-        <li><a href="#Productos">Productos Populares</a></li>
-        <li><a href="#Conocenos">Conocenos</a></li>
+        <li><a href="./index.php">Inicio</a></li>
+        <li><a href="./landinpage.php">Productos Populares</a></li>
+        <li><a href="./about.php">Conocenos</a></li>
         <li><a href="#Contactanos">Contactanos</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Airpaipe</a></li>
-        <li><a href="#">Deco</a></li>
+        <li><a href="./landinpage.php">Productos</a></li>
+        <li><a href="./landinpage.php">Airpaipe</a></li>
     </ul>
     <ul class="footer-options">
         <li><a href="#Contactanos">Contactanos</a></li>

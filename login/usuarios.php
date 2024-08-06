@@ -18,8 +18,8 @@ if (!isset($_SESSION['user_id'])) {
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/dashboard.css" rel="stylesheet" />
-        <link href="css/crud.css" rel="stylesheet" />
+        <link href="../css/dashboard.css" rel="stylesheet" />
+        <link href="../css/crud.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CSS -->
@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_id'])) {
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href=""><img src="./img/LOGOD.png" width="200"/></a>
+            <a class="navbar-brand ps-3" href=""><img src="../img/LOGOD.png" width="200"/></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -68,6 +68,10 @@ if (!isset($_SESSION['user_id'])) {
                             <a class="nav-link" href="usuarios.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Usuarios
+                            </a>
+                            <a class="nav-link" href="marca.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Marcas
                             </a>
                             <div class="sb-sidenav-footer">
                                 <div class="small">Sesion iniciada</div>
@@ -103,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
         </thead>
         <tbody id="data">
             <?php
-            include 'conexion.php';
+            include '../conexion.php';
             $sql = $conn->query("SELECT * FROM users");
 
             while ($datos = $sql->fetch_object()) {

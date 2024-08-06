@@ -329,7 +329,7 @@ ul.Opciones li a.active {
   .whatsapp {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 100px;
     border-radius: 5px;
     padding: 1rem;
   }
@@ -347,6 +347,7 @@ ul.Opciones li a.active {
     color: green;
     font-size: 160%;
   }
+
   .btn-whatsapp {
     background-color: #25D366;
     color: #fff;
@@ -355,6 +356,7 @@ ul.Opciones li a.active {
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    left: 10px;
   }
   
   .btn-whatsapp:hover {
