@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Dashboard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="../css/dashboard.css" rel="stylesheet" />
         <link href="../css/crud.css" rel="stylesheet" />
@@ -63,7 +63,7 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="sb-sidenav-menu-heading">Tablas</div>
                             <a class="nav-link" href="productos.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Productos
+                                Catalogos
                             </a>
                             <a class="nav-link" href="usuarios.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

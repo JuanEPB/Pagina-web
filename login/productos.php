@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Dashboard</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="../css/dashboard.css" rel="stylesheet" />
@@ -64,7 +64,7 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="sb-sidenav-menu-heading">Tablas</div>
                             <a class="nav-link" href="productos.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Productos
+                                Catalogos
                             </a>
                             <a class="nav-link" href="usuarios.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Productos     <button class="btn btn-success newProduct" data-bs-toggle="modal" data-bs-target="#productForm">Nuevo Producto <i class="bi bi-box"></i></button>
+        Catalogos     <button class="btn btn-success newProduct" data-bs-toggle="modal" data-bs-target="#productForm">Nuevo Catalogo <i class="bi bi-box"></i></button>
     </div>
     <div class="card-body">
         <table class="table datatables-simple" id="datatablesSimple2">
@@ -109,7 +109,7 @@ if (!isset($_SESSION['user_id'])) {
             <tbody>
                 <?php
                 include '../conexion.php';
-                $sql = $conn->query("SELECT * FROM productos");
+                $sql = $conn->query("SELECT * FROM catalogos");
 
                 while ($datos = $sql->fetch_object()) {
                     // Verificar el tipo MIME de la imagen y codificar en base64
@@ -136,8 +136,8 @@ if (!isset($_SESSION['user_id'])) {
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-light">
             <div class="modal-header bg-secondary" style="display=flex display: flex flex-wrap: wrap justify-content:space-between">
-                <h4 class="modal-title">Nuevo Producto</h4>
-                <img src="./img/LOGOD.png" alt="" width="100" height="100" class="img-fluid" >
+                <h4 class="modal-title">Nuevo Catalogo</h4>
+                <img src="../img/LOGOD.png" alt="" width="100" height="100" class="img-fluid" >
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

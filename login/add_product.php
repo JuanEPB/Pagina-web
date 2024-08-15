@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // echo "El archivo ". htmlspecialchars(basename($file['name'])). " se ha subido correctamente.";
 
             // Preparar la consulta SQL para insertar en la base de datos
-            $query = "INSERT INTO productos (name, file_name, file_path) VALUES (?,?,?)";
+            $query = "INSERT INTO catalogos (name, file_name, file_path) VALUES (?,?,?)";
             $stmt = $conn->prepare($query);
 
             if ($stmt) {
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     showConfirmButton: false,
                     timer: 1500
                   }).then(() => {
-                    window.location.href = "dashboard.php";
+                    window.location.href = "productos.php";
                   });
                 </script>
               </body>

@@ -2,8 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  header('Location: login.html');
-  exit;
+    header('Location: login.html');
+    exit;
 }
 
 // Código de la página dashboard.php
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 include '../conexion.php';
 
 $id = $_GET['id'];
-$sql = $conn->query("SELECT * FROM productos WHERE id = $id");
+$sql = $conn->query("SELECT * FROM catalogos WHERE id = $id");
 $data = $sql->fetch_object();
 
 // Mostrar el formulario de edición con los datos del producto
@@ -23,7 +23,7 @@ $data = $sql->fetch_object();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Producto</title>
+    <title>Actualizar Catalogo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -41,7 +41,7 @@ $data = $sql->fetch_object();
                 <div class="card">
                     <div class="card-body">
                     <img src="../img/logo.png" width="100"/>
-                        <h2 class="card-title">Actualizar Producto</h2>
+                        <h2 class="card-title">Actualizar Catalogo</h2>
                         <hr>
                         <form action="update_product.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">

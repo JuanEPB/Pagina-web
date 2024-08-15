@@ -1,9 +1,9 @@
-.containerpro {
+.container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
-    margin-left: 210px;
-    margin-right: 100px;
-    flex-wrap: wrap;
+    margin: 100px;
 }
 
 .card {
@@ -12,7 +12,10 @@
     overflow: hidden;
     margin: 10px;
     width: 18rem;
+    height: 1rem;;
+    flex-grow: 1;
 }
+
 
 .card-img-top {
     width: 100%;

@@ -7,7 +7,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
     // Preparar la consulta SQL para eliminar el producto
-    $query = "DELETE FROM productos WHERE id = ?";
+    $query = "DELETE FROM catalogos WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
 

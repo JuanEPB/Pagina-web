@@ -7,8 +7,6 @@
     <title>Productos</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/productos.css">
-    <!-- CSS only -->
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    </head>
     <body>
@@ -29,13 +27,13 @@
             <a class="nav-link" href="./index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./landinpage.php">Productos</a>
+            <a class="nav-link" href="./landinpage.php">Marcas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./about.php">Conocenos</a>
           </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contactanos">Contactanos</a>
+                <a class="nav-link" href="./index.php#Contactanos">Contactanos</a>
                 </li>
                 </ul>
             </div>
@@ -83,12 +81,11 @@
         <div class="select">
         </div>
     </div>
-    <div class="containerpro">
-    <div class="container mt-100 product-grid">
-        <div class="row justify-content-center">
+    <div class="container">
+        <div class="row">   
             <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="./img/Airpipe.jpg" class="card-img-top" alt="...">
+                <div class="card h-100">
+                    <img src="./img/AirPipe-Logo-2-800-600x450.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Airpipe</h5>
                         <p class="card-text">
@@ -97,8 +94,9 @@
                         <a href="./login/uploads/AIRPIPE-comprimido.pdf" download="AIRPIPE.comprimido.pdf" class="btn btn-primary">Ver Catalogo</a>
                     </div>
                 </div>
+            </div>
             <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
+                <div class="card h-100" >
                     <img src="./img/beko.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Beko</h5>
@@ -108,10 +106,9 @@
                         <a href="#" class="btn btn-primary">Ver Catalogo</a>
                     </div>
                 </div>
-</div>
+            </div>
             <div class="col-md-4">
-
-                <div class="card" style="width: 18rem;">
+                <div class="card h-100" >
                     <img src="./img/smc.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">SMC</h5>
@@ -120,12 +117,10 @@
                         </p>
                         <a href="#" class="btn btn-primary">Ver Catalogo</a>
                     </div>
-</div>
-</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     
         </section>
@@ -156,17 +151,17 @@
     
     <ul class="footer-options">
         <li><a href="./index.php">Inicio</a></li>
-        <li><a href="./landinpage.php">Productos Populares</a></li>
+        <li><a href="./landinpage.php">Marcas Populares</a></li>
         <li><a href="./about.php">Conocenos</a></li>
-        <li><a href="#Contactanos">Contactanos</a></li>
+        <li><a href="./index.php#Contactanos">Contactanos</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="./landinpage.php">Productos</a></li>
+        <li><a href="./landinpage.php">Marcas</a></li>
         <li><a href="./landinpage.php">Airpaipe</a></li>
     </ul>
     <ul class="footer-options">
-        <li><a href="#Contactanos">Contactanos</a></li>
-        <li><a href="#Contactanos">Informacion de contacto</a></li>
+        <li><a href="./index.php#Contactanos">Contactanos</a></li>
+        <li><a href="./about.php">Informacion de contacto</a></li>
     </ul>
 </footer>
 

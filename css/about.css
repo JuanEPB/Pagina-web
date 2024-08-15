@@ -2,7 +2,11 @@
     display: flex;
     flex-direction: column;
   }
-  
+  .container{
+    align-items: center;
+    flex-direction: column;
+
+  }
   .mision, .vision, .valores {
     display: flex;
     align-items: center;
@@ -28,4 +32,7 @@
   img {
     width: 100px;
     
+  }
+  .row{
+    align-items: center;
   }

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file_update = false;
 
     // Obtener el archivo actual de la base de datos
-    $query = "SELECT file_path FROM productos WHERE id = ?";
+    $query = "SELECT file_path FROM catalogos WHERE id = ?";
     $stmt = $conn->prepare($query);
     if ($stmt === false) {
         error_log("Error al preparar la consulta para obtener el archivo actual: " . $conn->error);
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Preparar la consulta SQL utilizando consultas preparadas
-    $query = "UPDATE productos SET name = ?";
+    $query = "UPDATE catalogos SET name = ?";
     $params = array($name);
     $types = 's';
 
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     showConfirmButton: false,
                     timer: 1500
                   }).then(() => {
-                    window.location.href = "dashboard.php";
+                    window.location.href = "productos.php";
                   });
                 </script>
               </body>

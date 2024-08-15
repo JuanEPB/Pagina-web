@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['marca_id'])) {
+if (!isset($_SESSION['user_id'])) {
   header('Location: login.html');
   exit;
 }
@@ -12,7 +12,7 @@ if (!isset($_SESSION['marca_id'])) {
 include '../conexion.php';
 
 $id = $_GET['id'];
-$sql = $conn->query("SELECT * FROM users WHERE id = $id");
+$sql = $conn->query("SELECT * FROM marcas WHERE id = $id");
 $data = $sql->fetch_object();
 
 // Mostrar el formulario de edición con los datos del usuario
@@ -52,9 +52,7 @@ $data = $sql->fetch_object();
                             </div>
                             <div class="form-group">
                                 <label for="photo">Foto:</label>
-                                <input type="file" name="image" id="imgInput">
-                                <i class="bi bi-plus-circle-dotted"></i> Subir Foto
-                                </label>
+                                <input type="file" name="image" id="imgInput"><i class="bi bi-plus-circle-dotted"></i> Subir Foto
                             </div>
                             <input type="hidden" name="id" value="<?= htmlspecialchars($data->id)?>">
                             <button  type="submit" class="btn btn-primary btn-block">Guardar cambios</button>
